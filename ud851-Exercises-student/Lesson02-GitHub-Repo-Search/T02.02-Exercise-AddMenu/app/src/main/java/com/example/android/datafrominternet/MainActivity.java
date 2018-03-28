@@ -65,7 +65,9 @@ public class MainActivity extends AppCompatActivity {
             Context context = MainActivity.this;
             String message = "Search clicked";
             Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+            return true;
         }
+        return false;
     }
 
     // TODO (13) If the item's ID is R.id.action_search, show a Toast and return true to tell Android that you've handled this menu click
