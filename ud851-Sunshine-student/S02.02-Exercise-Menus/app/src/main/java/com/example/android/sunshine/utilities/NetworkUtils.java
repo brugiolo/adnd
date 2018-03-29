@@ -15,8 +15,8 @@
  */
 package com.example.android.sunshine.utilities;
 
-import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -38,8 +38,7 @@ public final class NetworkUtils {
     private static final String STATIC_WEATHER_URL =
             "https://andfun-weather.udacity.com/staticweather";
 
-    private static final String FORECAST_BASE_URL =
-            "http://api.openweathermap.org/data/2.5/forecast";
+    private static final String FORECAST_BASE_URL = STATIC_WEATHER_URL;
 
     /*
      * NOTE: These values only effect responses from OpenWeatherMap, NOT from the fake weather
@@ -62,8 +61,6 @@ public final class NetworkUtils {
     final static String UNITS_PARAM = "units";
     final static String DAYS_PARAM = "cnt";
 
-    final static String ApiKey = "ad9717db59b95067f7695d7f91341575";
-
     /**
      * Builds the URL used to talk to the weather server using a location. This location is based
      * on the query capabilities of the weather provider that we are using.
@@ -73,9 +70,11 @@ public final class NetworkUtils {
      */
     public static URL buildUrl(String locationQuery) {
         Uri builtUri = Uri.parse(FORECAST_BASE_URL).buildUpon()
-            .appendQueryParameter("id", locationQuery)
-                .appendQueryParameter("APPID", ApiKey)
-                    .build();
+                .appendQueryParameter(QUERY_PARAM, locationQuery)
+                .appendQueryParameter(FORMAT_PARAM, format)
+                .appendQueryParameter(UNITS_PARAM, units)
+                .appendQueryParameter(DAYS_PARAM, Integer.toString(numDays))
+                .build();
 
         URL url = null;
         try {
@@ -83,6 +82,8 @@ public final class NetworkUtils {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+
+        Log.v(TAG, "Built URI " + url);
 
         return url;
     }
