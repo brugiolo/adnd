@@ -60,21 +60,17 @@ public class MainActivity extends AppCompatActivity {
                  * clear as possible.
                  */
                 Context context = MainActivity.this;
+
+                // TODO (1) Store ChildActivity.class in a Class object called destinationActivity
+
+                // TODO (2) Create an Intent to start ChildActivity
+
+                // TODO (3) Replace the Toast with code to start ChildActivity
                 String message = "Button clicked!\nTODO: Start a new Activity and pass some data.";
                 Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+
             }
         });
     }
 }
 
-// COMPLETE (1) Use Android Studio's Activity wizard to create a new Activity called ChildActivity
-
-// Do steps 2 - 5 in activity_child.xml
-// COMPLETE (2) Change the ConstraintLayout to a FrameLayout and make appropriate adjustments
-// COMPLETE (3) Give your TextView an ID of tv_display
-// COMPLETE (4) Set the text to something that indicates this is default text being displayed
-// COMPLETE (5) Make the text size a little larger
-
-// Do steps 6 & 7 in ChildActivity.java
-// COMPLETE (6) Create a TextView field to display your message
-// COMPLETE (7) Get a reference to your TextView in Java
