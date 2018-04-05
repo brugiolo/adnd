@@ -16,13 +16,27 @@
 -->
 <!-- The menu found in the main multi-day forecast  -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:app="http://schemas.android.com/apk/res-auto"
-      xmlns:tools="http://schemas.android.com/tools"
-      tools:context=".MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
     <item
         android:id="@+id/action_refresh"
         android:orderInCategory="1"
         android:title="@string/action_refresh"
         app:showAsAction="ifRoom"/>
-    <!--TODO (1) Add a menu item to open the map-->
+
+    <!--complete (1) Add a menu item to open the map-->
+    <item
+        android:id="@+id/action_open_map"
+        android:orderInCategory="1"
+        android:title="@string/action_open_map"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_share_thoughts"
+        android:orderInCategory="2"
+        android:title="@string/action_share_thoughts"
+        app:showAsAction="never"/>
+
 </menu>
