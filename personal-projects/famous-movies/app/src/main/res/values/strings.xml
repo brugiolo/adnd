@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Famous Movies</string>
+    <string name="action_order_best">Melhor Classificação</string>
+    <string name="action_order_popular">Mais Populares</string>
+</resources>
