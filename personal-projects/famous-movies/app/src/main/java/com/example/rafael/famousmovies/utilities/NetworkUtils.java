@@ -1,7 +1,10 @@
 package com.example.rafael.famousmovies.utilities;
 
+import android.content.Context;
 import android.net.Uri;
-import android.util.Log;
+
+import com.example.rafael.famousmovies.R;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -13,27 +16,44 @@ public final class NetworkUtils {
 
     private static final String TAG = NetworkUtils.class.getSimpleName();
 
-    private static final String FAMOUS_MOVIES_BASE_URL =
-            "https://andfun-weather.udacity.com/weather";
-
-    final static String FORMAT_PARAM = "mode";
+    private static final String famousMoviesDiscoverBaseUrl = "http://api.themoviedb.org/3/movie";
+    private static final String famousMoviesPosterBaseUrl = "http://image.tmdb.org/t/p/w185";
     private static final String returnFormat = "json";
 
-    public static URL buildUrl(String locationQuery) {
-        Uri builtUri = Uri.parse(FAMOUS_MOVIES_BASE_URL).buildUpon()
+    final static String FORMAT_PARAM = "mode";
+    final static String TARGET_PAGE_PARAM = "page";
+    final static String API_KEY = "api_key";
+
+    public enum EnumSortBy {
+        top_rated,
+        popular
+    }
+
+    public static URL buildDiscoverUrl(EnumSortBy targetSortBy, Integer targetPage, Context context) {
+        String baseUrl = famousMoviesDiscoverBaseUrl.concat("/").concat(targetSortBy.toString());
+
+        String apiKey = context.getString(R.string.THE_MOVIE_DB_API_TOKEN);
+
+        Uri builtUri = Uri.parse(baseUrl).buildUpon()
+                .appendQueryParameter(API_KEY, apiKey)
+                .appendQueryParameter(TARGET_PAGE_PARAM, targetPage.toString())
                 .appendQueryParameter(FORMAT_PARAM, returnFormat)
                 .build();
 
         URL url = null;
+
         try {
             url = new URL(builtUri.toString());
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
 
-        Log.v(TAG, "Built URI " + url);
-
         return url;
+    }
+
+    public static String buildPosterUrl(String posterPath) {
+        posterPath = famousMoviesPosterBaseUrl.concat(posterPath);
+        return posterPath;
     }
 
     public static String getResponseFromHttpUrl(URL url) throws IOException {

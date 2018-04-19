@@ -1,5 +1,12 @@
 <resources>
-    <string name="app_name">Famous Movies</string>
-    <string name="action_order_best">Melhor Classificação</string>
+    <string name="app_name">Filmes Famosos</string>
+    <string name="action_order_top_rated">Melhor Classificação</string>
     <string name="action_order_popular">Mais Populares</string>
+    <string name="vote_average">Avalição do público:</string>
+    <string name="popularity">Popularidade:</string>
+    <string name="release_date">Data de Lançamento:</string>
+    <string name="overview">Sinopse:</string>
+    <string name="title">Título:</string>
+    <string name="original_title">Título Original:</string>
+    <string name="internet_failure">Ocorreu uma falha.\nPor favor, verifique a conexão com a internet e tente novamente...</string>
 </resources>
