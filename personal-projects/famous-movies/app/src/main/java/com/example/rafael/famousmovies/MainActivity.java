@@ -39,7 +39,8 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
 
     private ProgressBar mLoadingIndicator;
     private RecyclerView mRecyclerView;
-    private TextView mErrorMessageDisplay;
+    private TextView mInternetErrorMessageDisplay;
+    private TextView mApiKeyInvalidErrorMessageDisplay;
     private MovieAdapter mMovieAdapter;
 
     public interface OnScrollListener {
@@ -68,10 +69,26 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(mMovieAdapter);
 
-        mErrorMessageDisplay = findViewById(R.id.tv_error_message_display);
+        mInternetErrorMessageDisplay = findViewById(R.id.tv_error_internet_message_display);
+        mApiKeyInvalidErrorMessageDisplay = findViewById(R.id.tv_error_api_key_invalid_message_display);
         mLoadingIndicator = findViewById(R.id.pb_loading_indicator);
 
+        String apiKey = getApiKey();
+        if (apiKey == null || apiKey == "") {
+            showApiKeyErrorMessage();
+            return;
+        }
+
         loadMoviesData();
+    }
+
+    private String getApiKey() {
+        try {
+            String apiKey = this.getString(R.string.THE_MOVIE_DB_API_TOKEN);
+            return apiKey;
+        } catch (Exception ex) {
+            return null;
+        }
     }
 
     private void loadMoviesData() {
@@ -87,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
             mLoadingIndicator.setVisibility(View.VISIBLE);
 
             currentSortBy = currentSortBy == null ? NetworkUtils.EnumSortBy.top_rated : currentSortBy;
-            if (mCurrentPage == null){
+            if (mCurrentPage == null) {
                 mCurrentPage = 1;
                 movies = null;
             }
@@ -122,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
                 showMoviesView();
                 mMovieAdapter.setMoviesData(moviesData);
             } else {
-                showErrorMessage();
+                showInternetErrorMessage();
             }
         }
     }
@@ -166,13 +183,21 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     }
 
     private void showMoviesView() {
-        mErrorMessageDisplay.setVisibility(View.INVISIBLE);
+        mInternetErrorMessageDisplay.setVisibility(View.INVISIBLE);
+        mApiKeyInvalidErrorMessageDisplay.setVisibility(View.INVISIBLE);
         mRecyclerView.setVisibility(View.VISIBLE);
     }
 
-    private void showErrorMessage() {
+    private void showApiKeyErrorMessage() {
         mRecyclerView.setVisibility(View.INVISIBLE);
-        mErrorMessageDisplay.setVisibility(View.VISIBLE);
+        mInternetErrorMessageDisplay.setVisibility(View.INVISIBLE);
+        mApiKeyInvalidErrorMessageDisplay.setVisibility(View.VISIBLE);
+    }
+
+    private void showInternetErrorMessage() {
+        mRecyclerView.setVisibility(View.INVISIBLE);
+        mApiKeyInvalidErrorMessageDisplay.setVisibility(View.INVISIBLE);
+        mInternetErrorMessageDisplay.setVisibility(View.VISIBLE);
     }
 
     @Override

@@ -11,11 +11,20 @@
         android:layout_height="match_parent"/>
 
     <TextView
-        android:id="@+id/tv_error_message_display"
+        android:id="@+id/tv_error_internet_message_display"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="@string/internet_failure"
+        android:text="@string/error_internet_failure"
+        android:textSize="20sp"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/tv_error_api_key_invalid_message_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="@string/error_api_key_invalid"
         android:textSize="20sp"
         android:visibility="invisible" />
 
