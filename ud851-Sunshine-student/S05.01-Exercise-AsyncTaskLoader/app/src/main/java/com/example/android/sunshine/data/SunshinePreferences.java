@@ -86,7 +86,7 @@ public class SunshinePreferences {
      * @return Location The current user has set in SharedPreferences. Will default to
      * "94043,USA" if SharedPreferences have not been implemented yet.
      */
-    public static String getPreferredWeatherLocation(Context context) {
+    public static String getPreferredWeatherLocation() {
         /** This will be implemented in a future lesson **/
         return getDefaultWeatherLocation();
     }
