@@ -16,6 +16,8 @@
 package com.example.android.sunshine;
 
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
@@ -28,37 +30,41 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_settings);
-        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // TODO (2) Create an xml resource directory
-        // TODO (3) Add a PreferenceScreen with an EditTextPreference and ListPreference within the newly created xml resource directory
+        ActionBar actionBar = this.getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
-        // TODO (4) Create SettingsFragment and extend PreferenceFragmentCompat
+        // completed (2) Create an xml resource directory
+        // completed (3) Add a PreferenceScreen with an EditTextPreference and ListPreference within the newly created xml resource directory
+
+        // completed (4) Create SettingsFragment and extend PreferenceFragmentCompat
 
         // Do steps 5 - 11 within SettingsFragment
-        // TODO (10) Implement OnSharedPreferenceChangeListener from SettingsFragment
+        // completed (10) Implement OnSharedPreferenceChangeListener from SettingsFragment
 
-        // TODO (8) Create a method called setPreferenceSummary that accepts a Preference and an Object and sets the summary of the preference
+        // completed (8) Create a method called setPreferenceSummary that accepts a Preference and an Object and sets the summary of the preference
 
-        // TODO (5) Override onCreatePreferences and add the preference xml file using addPreferencesFromResource
+        // completed (5) Override onCreatePreferences and add the preference xml file using addPreferencesFromResource
 
         // Do step 9 within onCreatePreference
-        // TODO (9) Set the preference summary on each preference that isn't a CheckBoxPreference
+        // completed (9) Set the preference summary on each preference that isn't a CheckBoxPreference
 
-        // TODO (13) Unregister SettingsFragment (this) as a SharedPreferenceChangedListener in onStop
+        // completed (13) Unregister SettingsFragment (this) as a SharedPreferenceChangedListener in onStop
 
-        // TODO (12) Register SettingsFragment (this) as a SharedPreferenceChangedListener in onStart
+        // completed (12) Register SettingsFragment (this) as a SharedPreferenceChangedListener in onStart
 
-        // TODO (11) Override onSharedPreferenceChanged to update non CheckBoxPreferences when they are changed
+        // completed (11) Override onSharedPreferenceChanged to update non CheckBoxPreferences when they are changed
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
+        // When the home button is pressed, take the user back to the VisualizerActivity
         if (id == android.R.id.home) {
-            onBackPressed();
+            NavUtils.navigateUpFromSameTask(this);
         }
-
         return super.onOptionsItemSelected(item);
     }
 }
