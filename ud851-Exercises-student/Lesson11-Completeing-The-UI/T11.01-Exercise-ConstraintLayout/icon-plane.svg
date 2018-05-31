@@ -1,0 +1,14 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 68.48">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #2d4b6e;
+      }
+    </style>
+  </defs>
+  <title>icon-plane</title>
+  <g>
+    <path class="cls-1" d="M46.76,73.2l7.09-7.44L121.5,92.61,181.83,72.5s20.11-1.51,18,6.68-12,12.26-12,12.26l-126,42.31s-5.7,1.39-22-.58-23.6-4.77-23.6-4.77L75.58,108Z" transform="translate(0 -65.76)"/>
+    <polygon class="cls-1" points="5.38 38.13 34.9 51.73 15.02 59.05 0 42.66 5.38 38.13"/>
+  </g>
+</svg>
